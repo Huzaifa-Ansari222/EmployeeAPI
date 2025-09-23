@@ -1,21 +1,48 @@
-URL:
+# Employee API - Spring Boot (Java 17)
 
-Swagger UI (use this to see and try all controllers): http://localhost:8080/swagger-ui.html
+## 🔗 URLs
+- **Swagger UI** (explore and test all APIs):  
+  [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-H2 Console: http://localhost:8080/h2-console
+- **H2 Database Console**:  
+  [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
-Tasks:
+---
 
-Build and run the application.
+## 🚀 Tasks
 
-Q1:Write a REST API method for Employee:
+### 1️⃣ Build & Run
+- Build and start the application using your preferred IDE or `./gradlew bootRun`.
 
-    Create new Employee (Post /api/employees/create).(Controller,Service,Repository layer)
-    
-   Retrieve the Employee with ID 5 (GET /api/employees/5).(Controller,Service,Repository layer)
-   
-Q2: Write a @ControllerAdvice class to handle:
+---
 
-EntityNotFoundException → return 404 Not Found
+### 2️⃣ REST API (Employee)
 
-Q3: How would you write an integration test for GET /api/employees/{id} using Spring Boot’s @SpringBootTest and H2 database? Provide the setup and one test case.
+**Q1: Implement the following endpoints (Controller, Service, Repository layers):**
+
+- **Create a new Employee**  
+  `POST /api/employees/create`  
+
+- **Retrieve Employee with ID 5**  
+  `GET /api/employees/5`
+
+---
+
+### 3️⃣ Exception Handling
+
+**Q2: Create a `@ControllerAdvice` class to handle exceptions:**
+- `EntityNotFoundException` → return **404 Not Found**
+
+---
+
+### 4️⃣ Integration Testing
+
+**Q3: Write an integration test for**  
+`GET /api/employees/{id}` using **Spring Boot’s `@SpringBootTest` and H2 database**.  
+
+👉 Include:
+- **Setup** (H2 config, test data initialization)  
+- **One test case** (e.g., verify that fetching a valid Employee ID returns `200 OK` with correct response body).  
+
+---
+
