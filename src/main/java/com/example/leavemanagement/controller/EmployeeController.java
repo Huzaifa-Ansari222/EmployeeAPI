@@ -5,7 +5,6 @@ import com.example.leavemanagement.dto.EmployeeDto;
 import com.example.leavemanagement.dto.UpdateEmployeeRequest;
 import com.example.leavemanagement.service.EmployeeService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,10 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/employees")
-@RequiredArgsConstructor
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
+   // private final EmployeeService employeeService;
 
     @PostMapping("/create")
     public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody CreateEmployeeRequest request) {

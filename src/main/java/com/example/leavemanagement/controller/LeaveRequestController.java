@@ -16,10 +16,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/leaves")
-@RequiredArgsConstructor
 public class LeaveRequestController {
 
-    private final LeaveRequestService leaveRequestService;
+   // private final LeaveRequestService leaveRequestService;
 
     @PostMapping
     public ResponseEntity<LeaveRequestDto> createLeave(@Valid @RequestBody CreateLeaveRequest request) {
