@@ -18,17 +18,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-   // private final EmployeeService employeeService;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody CreateEmployeeRequest request) {
-
-        return null;
+//        System.out.println("Incoming request: " + request);
+        EmployeeDto createdEmployee = employeeService.createEmployee(request);
+//        System.out.println("Employee created: " + createdEmployee);
+        return new ResponseEntity<>(createdEmployee,HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id) {
-        return null;
+        // Calling service to get employee data
+        EmployeeDto getEmp = employeeService.getEmployee(id);
+
+        // Returning response with HTTP 200 OK
+        return ResponseEntity.ok(getEmp);
     }
 
     @GetMapping
@@ -38,8 +49,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id,
-                                                       @Valid @RequestBody UpdateEmployeeRequest request) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @Valid @RequestBody UpdateEmployeeRequest request) {
         return null;
     }
 

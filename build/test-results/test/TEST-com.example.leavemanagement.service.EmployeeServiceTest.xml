@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.leavemanagement.service.EmployeeServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-10T21:42:13.622Z" hostname="HUZZ-LAPTOP" time="2.29">
+  <properties/>
+  <testcase name="getEmployee_shouldReturn()" classname="com.example.leavemanagement.service.EmployeeServiceTest" time="2.29"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

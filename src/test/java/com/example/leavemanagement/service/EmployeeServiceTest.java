@@ -1,7 +1,10 @@
 package com.example.leavemanagement.service;
-
 import com.example.leavemanagement.dto.CreateEmployeeRequest;
+import com.example.leavemanagement.dto.EmployeeDto;
 import com.example.leavemanagement.dto.UpdateEmployeeRequest;
+import com.example.leavemanagement.model.Employee;
+import com.example.leavemanagement.repository.EmployeeRepository;
+import com.example.leavemanagement.service.impl.EmployeeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -9,6 +12,13 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 
 public class EmployeeServiceTest {
 
@@ -17,6 +27,12 @@ public class EmployeeServiceTest {
 
     @InjectMocks
     private com.example.leavemanagement.service.impl.EmployeeServiceImpl employeeService;
+
+//    @Autowired
+    private MockMvc mockMvc;
+
+    @Mock
+    private EmployeeRepository employeeRepository;
 
     @BeforeEach
     void setup() {
@@ -31,8 +47,20 @@ public class EmployeeServiceTest {
 
     @Test
     void getEmployee_shouldReturn() {
-        // TODO
-    }
+        // Given (Mock repository response)
+        Employee employee = new Employee();
+        employee.setId(1L);
+        employee.setName("John");
+        employee.setEmail("john@example.com");
+
+        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee));
+
+        // When
+        EmployeeDto result = employeeService.getEmployee(1L);
+
+        // Then
+        assertEquals("John", result.getName());
+        assertEquals("john@example.com", result.getEmail());    }
 
     @Test
     void getEmployees_shouldPage() {
